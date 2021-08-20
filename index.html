@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Coladera de Eratóstenes</h1>
+    <h2>Numeros Primos menores a 1000</h2>
+    <h3>Resultado en consola</h3>
+
+    <script>
+        
+        function esPrimo(n) {
+            let array = [];
+            let newArray = [];
+            for(let i = 1; i <= n+1; i++) {
+                array.push(i);
+            }
+            //console.log(array);
+            for(let j = 0; j <= n; j++) {
+                array[j] = true;
+            }
+            array[0] = false;
+            for(let k = 2; k <= n; k++) {
+                if(array[k] == true) {
+                    for(let l = 2; l*k <= n; l++) { 
+                        array[k*l] = 0;
+                    }
+                }
+            }
+            for(let i = 0; i < array.length; i++) {
+                if(array[i] == true) {
+                    newArray.push(i);
+                }
+            }
+            return newArray;
+        }
+        //imprime resultado
+        console.log(esPrimo(1000));
+    </script>
+</body>
+</html>
